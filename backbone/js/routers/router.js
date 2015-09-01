@@ -4,10 +4,11 @@ var app = app || {};
 	'use strict';
 
 	var TodoRouter = Backbone.Router.extend({
-		routers: {
+		routes: {
 			'*filter': 'setFilter'
 		},
 		setFilter: function(param){
+			console.log(param)
 			app.TodoFilter = param || '';
 			app.todos.trigger('filter');
 		}

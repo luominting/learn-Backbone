@@ -7,11 +7,15 @@ var app = app || {};
 		statsTemplate: _.template( $('#stats-template').html() ),
 		events: {
 			'keypress .new-todo': 'createOnEnter',
+			'click .clear-completed': 'clearCompleted',
+			'click .toggle-all': 'toggleAllComplete'
 
 		},
 		initialize: function(){
 			this.listenTo(app.todos, 'add', this.addOne);
 			this.listenTo(app.todos, 'reset', this.addAll);
+			this.listenTo(app.todos, 'change:completed', this.filterOne);
+			this.listenTo(app.todos, 'filter', this.filterAll);
 			this.listenTo(app.todos, 'all', _.debounce(this.render, 0));
 			app.todos.fetch({reset: true});
 		},
@@ -59,6 +63,25 @@ var app = app || {};
 		},
 		addAll: function(){
 			app.todos.each(this.addOne,this)
+		},
+		filterOne: function(todo){
+			todo.trigger('visible');
+		},
+		filterAll: function(){
+			app.todos.each(this.filterOne, this);
+		},
+		clearCompleted: function(){
+			_.invoke(app.todos.completed(), 'destroy');
+			return false;
+		},
+		toggleAllComplete: function(){
+			var completed = $('.toggle-all')[0].checked;
+
+			app.todos.each(function(todo){
+				todo.save({
+					completed: completed
+				})
+			});
 		}
 	});
 })();

@@ -19,6 +19,7 @@ var app = app || {};
 			this.listenTo(this.model, 'visible', this.toggleVisible);
 		},
 		render: function(){
+			console.log(this.model.toJSON())
 			if (this.model.changed.id !== undefined){
 				return;
 			}

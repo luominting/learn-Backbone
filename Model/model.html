@@ -9,46 +9,7 @@
 	<script src="../backbone/node_modules/underscore/underscore.js"></script>
 	<script src="../backbone/node_modules/backbone/backbone.js"></script>
 	<script>
-		var Foo = Backbone.Model.extend({});
-		// 或是初始化默认数据
-		// var Foo = Backbone.Model.extend({
-		//     defaults: {
-		//         name: "hello",
-		//         value: "233"
-		//     }
-		// });
-		//  或是运行时赋值。
-		//  比如这样：
-		// var foo = new Foo({name:"world", value:"874"});
-		//  或这样：
-	    // var foo = new Foo;
-	    // foo.set({name:"world", value:"874"});
-	    
-	    var FooList = Backbone.Collection.extend({  
-		    model: Foo  
-		}); 
-
-		var foos = new FooList;  
-		foos.add([{name:"hello", value:"233"},{name:"world", value:"874"}]); 
-
-	    console.log(foos.at(1).toJSON())
-	    // console.log(foo.toJSON())
-	    // console.log(JSON.stringify(foo.toJSON()))
-	    // console.log(JSON.stringify(foo))
-	    // 
-	    // 
-	    
-
-	    var Task = Backbone.Model.extend({  
-		    initialize: function () {  
-		        this.on("change:name", function (model) {  
-		            alert("new name is : " + model.get("name"));  
-		        });  
-		    }  
-		});  
-  
-    var t = new Task({tid:"3333", name:"oooo", state:"working"});  
-    t.set({name:"xxx"});  
+		
 	</script>
 </body>
 </html>
