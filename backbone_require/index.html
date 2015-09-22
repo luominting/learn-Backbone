@@ -1,0 +1,24 @@
+<!doctype html>
+<html data-framework="backbonejs">
+	<head>
+		<meta charset="utf-8">
+		<title>Backbone.js + RequireJS • TodoMVC</title>
+		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+	</head>
+	<body>
+		<section id="todoapp">
+			<header id="header">
+				<input id="new-todo"  autofocus>
+			</header>
+			<section id="main">
+				<input id="toggle-all" type="checkbox">
+				<ul id="todo-list"></ul>
+			</section>
+			<footer id="footer"></footer>
+		</section>
+
+		<script src="node_modules/todomvc-common/base.js"></script>
+		<script data-main="js/main" src="node_modules/requirejs/require.js"></script>
+	</body>
+</html>
